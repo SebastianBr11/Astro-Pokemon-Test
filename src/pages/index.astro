@@ -1,0 +1,21 @@
+---
+import Example from "../components/Example.svelte";
+
+import { pokemon } from "../util/fetching.js";
+
+const preRendered = await pokemon.all(fetch); 
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>Astro + TailwindCSS</title>
+    <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/global.css")}>
+  </head>
+
+  <body class="min-h-screen dark:bg-gray-800 py-2 lg:py-6 xl:py-8 text-gray-300 grid place-items-center">
+    <main class="container mx-auto p-8 grid">
+      <Example preRendered={preRendered} client:idle /> 
+    </main>
+  </body>
+</html>
